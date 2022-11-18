@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import Notescontex from "../Context/notes/Notescontex";
 import Noteitem from "./Noteitem";
 import Addnotes from "./Addnotes";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Notes = (props) => {
   const context = useContext(Notescontex);
@@ -13,7 +13,7 @@ const Notes = (props) => {
     /*if (localStorage.getItem("token")) {
       Getallnote();
     }*/
-    localStorage.getItem("token") ? Getallnote() : navigate('/login');
+    localStorage.getItem("token") ? Getallnote() : navigate("/login");
   }, []);
 
   const ref = useRef(null);
@@ -39,7 +39,6 @@ const Notes = (props) => {
   const handelclick = (e) => {
     debugger;
     e.preventDefault();
-    console.log(e);
     Editnotes(note.id, note.etitle, note.edescription, note.etag);
     setNotes({
       id: "",

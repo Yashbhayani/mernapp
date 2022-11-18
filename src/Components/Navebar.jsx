@@ -9,8 +9,6 @@ const Navebar = () => {
   const navigate = useNavigate();
   let location = useLocation();
 
-  console.log(Username);
-
   const handelLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");

@@ -9,9 +9,22 @@ router.get('/fetchallnots', fetchUser, async (req, res) => {
 
     try {
         const notes = await Note.find({ user: req.user.id });
+
+        /*const sd = await Note.aggregate([
+            {
+                $lookup: {
+                    from: 'users',
+                    localField: 'user',
+                    foreignField: '_id',
+                    as: 'orderdetails'
+                }
+            }]);
+        for (let i = 0; i < sd.length; i++) {
+            console.log(sd[i]);
+        }*/
+
         let name = req.user.name;
-        console.log()
-        res.json({name, notes});
+        res.json({ name, notes });
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Intranal server Errored");
@@ -49,7 +62,7 @@ router.put('/updatenots/:id', fetchUser, async (req, res) => {
         if (description) { newNote.description = description };
         if (tag) { newNote.tag = tag };
 
-         // Find the note to be updated and update it
+        // Find the note to be updated and update it
         let note = await Note.findById(req.params.id);
         if (!note) { return res.status(404).send("Not Found") }
 

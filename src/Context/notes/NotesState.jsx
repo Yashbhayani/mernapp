@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Notescontex from "./Notescontex";
+import { io } from "socket.io-client";
+
+// const soket = io.connect("http://localhost:5000")
 
 const NotesState = (props) => {
   const host = "http://localhost:5000";
@@ -16,11 +19,11 @@ const NotesState = (props) => {
         "auth-token": localStorage.getItem("token"),
       },
     });
+
+    // soket.on()
     const json = await response.json();
     setNotes(json.notes);
     setUsername(json.name);
-    console.log(json);
-    // setUsername(json.)
   };
 
   //Add notes

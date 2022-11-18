@@ -3,7 +3,7 @@ const ServerApiVersion = require('mongodb').ServerApiVersion;
 const mongoose = require('mongoose');
 const mongURI = "mongodb://127.0.0.1:27017/User";
 //const mongURI = "mongodb+srv://Yash:bItHPkcS8zU9OhJf@realmcluster.s2jue.mongodb.net/?retryWrites=true&w=majority";
-const MONGOclient = new MongoClient(mongURI, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+//const MONGOclient = new MongoClient(mongURI, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 /*
 const connectToMongo = () => {

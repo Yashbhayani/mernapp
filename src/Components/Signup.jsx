@@ -12,7 +12,6 @@ const Signup = (props) => {
 
   const onChange = (e) => {
     setSIGNUP({ ...SIGNUP, [e.target.name]: e.target.value });
-    console.log(SIGNUP);
   };
 
   const handleSubmit = async (e) => {
@@ -34,7 +33,6 @@ const Signup = (props) => {
         }
       );
       const json = await response.json();
-      console.log(json);
       if (json.success) {
         localStorage.setItem("token", json.authToken);
         navigate("/");
