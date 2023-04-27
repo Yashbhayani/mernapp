@@ -10,9 +10,6 @@ const Notes = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    /*if (localStorage.getItem("token")) {
-      Getallnote();
-    }*/
     localStorage.getItem("token") ? Getallnote() : navigate("/login");
   }, []);
 
