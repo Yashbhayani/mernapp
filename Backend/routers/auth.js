@@ -8,8 +8,6 @@ const fetchUser = require('../midlewere/fetchuser');
 
 const JWT_SCERET = 'Yashisagoodboy';
 
-//Router:-1 
-//Create a using: POST Add user data
 router.post('/createuser', [
    body('name', 'Enter a Valid Name').isLength({ min: 3 }),
    body('email', 'Enter a Valid Email').isEmail(),
@@ -35,16 +33,7 @@ router.post('/createuser', [
          name: req.body.name,
          email: req.body.email,
          password: secPass
-         // password: req.body.password
       })
-      /*.then((user) => { console.log(user) })
-         .catch((err) => {
-            console.error(err)
-            res.json({
-               errors: 'Please enter a unique value for email',
-               message: err.message
-            })
-         });*/
 
       const data = {
          user: {
@@ -61,17 +50,8 @@ router.post('/createuser', [
       console.error(err.message);
       res.status(500).send("some error occurred");
    }
-   /*
-   res.json("data added successfully");   
-   let { name, email, password } = req.body;
-      const user = new User({ name: name, email: email, password: password });
-      await user.save();
-      res.send(user);*/
 })
 
-
-//Router:-2
-//Authentication  a user
 router.post('/login', [
    body('email', 'Enter a Valid Email').isEmail(),
    body('password', 'Password can not be empty').isStrongPassword({ min: 8 })
@@ -111,8 +91,6 @@ router.post('/login', [
    }
 });
 
-//Router:-3
-//get login user details using 
 router.post('/getUser', fetchUser, async (req, res) => {
    try {
       let userId = req.user.id;
