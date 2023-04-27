@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import Notescontex from "./Notescontex";
 import { io } from "socket.io-client";
 
-// const soket = io.connect("http://localhost:5000")
-
 const NotesState = (props) => {
   const host = "http://localhost:5000";
   const notesIntial = [];
   const [notes, setNotes] = useState(notesIntial);
   const [Username, setUsername] = useState();
-
-  //Getall notes
+  
   const Getallnote = async () => {
     const response = await fetch(`${host}/api/notes/fetchallnots`, {
       method: "GET",
@@ -20,13 +17,11 @@ const NotesState = (props) => {
       },
     });
 
-    // soket.on()
     const json = await response.json();
     setNotes(json.notes);
     setUsername(json.name);
   };
 
-  //Add notes
   const Addnote = async (title, description, tag) => {
     const response = await fetch(`${host}/api/notes/addnots`, {
       method: "POST",
@@ -41,7 +36,6 @@ const NotesState = (props) => {
     setNotes(notes.concat(json));
   };
 
-  //Edit notes
   const Editnotes = async (id, title, description, tag) => {
     const response = await fetch(`${host}/api/notes/updatenots/${id}`, {
       method: "PUT",
@@ -67,7 +61,6 @@ const NotesState = (props) => {
     setNotes(newNotes);
   };
 
-  //Deleter notes
   const Deleternotes = async (id) => {
     const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
       method: "DELETE",
